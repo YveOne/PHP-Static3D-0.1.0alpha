@@ -1,0 +1,40 @@
+    static public function depthFog($nearZ, $farZ, $smogCol)
+    {
+        if(self::$_stage != S3D_STAGE_POSTPROCESSING) return;
+        //
+        $_surface = &self::$_surface;
+        $_zBuffer = &self::$_zBuffer;
+        $_width = &self::$_width;
+        $_height = &self::$_height;
+        //
+        $smogR = ($smogCol >> 16) & 0xFF;
+        $smogG = ($smogCol >> 8) & 0xFF;
+        $smogB = $smogCol & 0xFF;
+        $zRange = $farZ-$nearZ;
+
+        for ($x=0; $x<$_width; $x++)
+        for ($y=0; $y<$_height; $y++)
+        {
+            $z = imagecolorat($_zBuffer, $x, $y);
+            if ($z <= $nearZ) continue;
+            if ($z == 0xffffff) continue;
+            if ($z < $farZ)
+            {
+                $curColor = imagecolorat($_surface, $x, $y);
+                $curR = (($curColor >> 16) & 0xFF);
+                $curG = (($curColor >> 8) & 0xFF);
+                $curB = ($curColor & 0xFF);
+                $percSmog = ($z-$nearZ) / $zRange;
+                $percFrame = 1-$percSmog;
+                $newR = (($smogR*$percSmog + $curR*$percFrame) << 16);
+                $newG = (($smogG*$percSmog + $curG*$percFrame) << 8);
+                $newB = ($smogB*$percSmog + $curB*$percFrame);
+                $newColor = $newR + $newG + $newB;
+                imagesetpixel($_surface, $x, $y, $newColor);
+            }
+            else
+            {
+                imagesetpixel($_surface, $x, $y, $smogCol);
+            }
+        }
+    }

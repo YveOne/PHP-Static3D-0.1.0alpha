@@ -1,0 +1,73 @@
+function lineIntersection($p1, $p2, $p3)
+{
+    $rX = $p2[0] - $p1[0];
+    $rY = $p2[1] - $p2[1];
+    $rZ = $p2[2] - $p2[2];
+    $sum1 = $p3[0] * $rX;
+    $sum2 = $p3[1] * $rY;
+    $sum3 = $p3[2] * $rZ;
+    $sum = $sum1 + $sum2 + $sum3;
+    $lamda1 = $sum - ($rX * $p1[0]) + ($rY * $p1[1]) + ($rZ * $p1[2]);
+    $lamda2 = ($rX*$rX) + ($rY*$rY) + ($rZ*$rZ);
+    $lamda = $lamda1 / $lamda2;
+    $sX = $lamda * $rX + $p1[0];
+    $sY = $lamda * $rY + $p1[1];
+    $sZ = $lamda * $rZ + $p1[2];
+    return [$sX, $sY, $sZ];
+}
+
+   PUBLIC LINE_INTERSECT 9 X1 Y1 Z1 X2 Y2 Z2 X3 Y3 Z3
+      DEFINE DOUBLE R_X 0
+      DEFINE DOUBLE R_Y 0
+      DEFINE DOUBLE R_Z 0
+      DEFINE DOUBLE SUM_1 0
+      DEFINE DOUBLE SUM_2 0
+      DEFINE DOUBLE SUM_3 0
+      DEFINE DOUBLE SUM 0
+      DEFINE DOUBLE LAMDA_1_1 0
+      DEFINE DOUBLE LAMDA_1_2 0
+      DEFINE DOUBLE LAMDA_1_3 0
+      DEFINE DOUBLE LAMDA_1 0
+      DEFINE DOUBLE LAMDA_2_1 0
+      DEFINE DOUBLE LAMDA_2_2 0
+      DEFINE DOUBLE LAMDA_2_3 0
+      DEFINE DOUBLE LAMDA_2 0
+      DEFINE DOUBLE LAMDA 0
+      DEFINE DOUBLE S_X 0
+      DEFINE DOUBLE S_Y 0
+      DEFINE DOUBLE S_Z 0
+      DEFINE DOUBLE X_DIFF 0
+      DEFINE DOUBLE Y_DIFF 0
+      DEFINE DOUBLE Z_DIFF 0
+      DEFINE VECTOR3 SP 0
+      R_X = X2 - X1
+      R_Y = Y2 - Y1
+      R_Z = Z2 - Z1
+      SUM_1 = X3 * R_X
+      SUM_2 = Y3 * R_Y
+      SUM_3 = Z3 * R_Z
+      SUM = SUM_1 + SUM_2
+      SUM = SUM + SUM_3
+      LAMDA_1_1 = R_X * X1
+      LAMDA_1_2 = R_Y * Y1
+      LAMDA_1_3 = R_Z * Z1
+      LAMDA_1 = LAMDA_1_1 + LAMDA_1_2
+      LAMDA_1 = LAMDA_1 + LAMDA_1_3
+      LAMDA_1 = SUM - LAMDA_1
+      LAMDA_2_1 = R_X ^ TWO
+      LAMDA_2_2 = R_Y ^ TWO
+      LAMDA_2_3 = R_Z ^ TWO
+      LAMDA_2 = LAMDA_2_1 + LAMDA_2_2
+      LAMDA_2 = LAMDA_2 + LAMDA_2_3
+      LAMDA = LAMDA_1 / LAMDA_2
+      S_X = LAMDA * R_X
+      S_X = S_X + X1
+      S_Y = LAMDA * R_Y
+      S_Y = S_Y + Y1
+      S_Z = LAMDA * R_Z
+      S_Z = S_Z + Z1
+      SP.X = S_X
+      SP.Y = S_Y
+      SP.Z = S_Z
+      SLEEP 1
+   RETURN SP

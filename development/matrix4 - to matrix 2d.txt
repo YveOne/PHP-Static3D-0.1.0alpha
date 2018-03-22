@@ -1,0 +1,22 @@
+
+
+
+/**
+ * Converts the "mat" matrix into a Matrix2D
+ * @method toMatrix2D
+ * @memberOf tomahawk_ns.Matrix4x4
+ * @param {tomahawk_ns.Matrix4x4} mat the matrix you want to convert
+ * @return {tomahawk_ns.Matrix2D}
+ **/
+Matrix4x4.toMatrix2D = function(mat)
+{
+	var matrix2D = new tomahawk_ns.Matrix2D();
+	matrix2D.a = mat.data[0];
+	matrix2D.b = mat.data[4];
+	matrix2D.c = mat.data[1];
+	matrix2D.d = mat.data[5];
+	matrix2D.tx = mat.data[3];
+	matrix2D.ty = mat.data[7];
+	
+	return matrix2D;
+};

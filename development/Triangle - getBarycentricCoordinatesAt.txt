@@ -1,0 +1,16 @@
+
+  Vector Triangle::getBarycentricCoordinatesAt( const Vector & P ) const
+  {
+    Vector bary ;
+
+    // The area of a triangle is 
+    real areaABC = DOT( normal, CROSS( (b - a), (c - a) )  ) ;
+    real areaPBC = DOT( normal, CROSS( (b - P), (c - P) )  ) ;
+    real areaPCA = DOT( normal, CROSS( (c - P), (a - P) )  ) ;
+
+    bary.x = areaPBC / areaABC ; // alpha
+    bary.y = areaPCA / areaABC ; // beta
+    bary.z = 1.0f - bary.x - bary.y ; // gamma
+
+    return bary ;
+  }

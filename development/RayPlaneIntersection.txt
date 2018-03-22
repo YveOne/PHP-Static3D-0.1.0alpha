@@ -1,0 +1,11 @@
+
+  static Nullable<float> RayPlaneIntersection(
+      ref Ray ray, ref Plane plane)
+  {
+      Vector3 PointOnPlane = plane.D * plane.Normal;
+      float DotNormalDir = Vector3.Dot(plane.Normal, ray.Direction);
+      if (DotNormalDir == 0) return null;
+      float d = Vector3.Dot(plane.Normal, PointOnPlane - ray.Position) /
+          DotNormalDir;
+      return d;
+  }

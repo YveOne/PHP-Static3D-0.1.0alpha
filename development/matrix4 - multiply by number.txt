@@ -1,0 +1,34 @@
+
+
+
+/**
+* @method multiplyByNumber
+* @memberOf tomahawk_ns.Matrix4x4.prototype
+* @description multiply the current matrix by p_number
+* @param {Number} p_number
+* @returns {Matrix4x4} This instance. Useful for chaining method calls.
+**/
+Matrix4x4.prototype.multiplyByNumber = function( p_number )
+{
+	var data1 = this.data;
+	
+	data1[0] *= p_number;
+	data1[1] *= p_number;
+	data1[2] *= p_number;
+	data1[3] *= p_number;
+	data1[4] *= p_number;
+	data1[5] *= p_number;
+	data1[6] *= p_number;
+	data1[7] *= p_number;
+	data1[8] *= p_number;
+	data1[9] *= p_number;
+	data1[10] *= p_number;
+	data1[11] *= p_number;
+	data1[12] *= p_number;
+	data1[13] *= p_number;
+	data1[14] *= p_number;
+	data1[15] *= p_number;
+	
+	return this;
+};
+

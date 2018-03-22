@@ -1,0 +1,46 @@
+
+
+
+/**
+* @method rotate
+* @memberOf tomahawk_ns.Matrix4x4.prototype
+* @description rotate the matrix by rx, ry, and rz
+* @param {Number} rx
+* @param {Number} ry
+* @param {Number} rz
+* @returns {Matrix4x4} This instance. Useful for chaining method calls.
+**/
+Matrix4x4.prototype.rotate =  function( rx, ry, rz )
+{
+	var c = tomahawk_ns.Matrix4x4._cos[rx];
+	var s = tomahawk_ns.Matrix4x4._sin[rx];
+	
+	tomahawk_ns.Matrix4x4._ROTATION_X_MATRIX.data[5] = c;
+	tomahawk_ns.Matrix4x4._ROTATION_X_MATRIX.data[6] = -s;
+	tomahawk_ns.Matrix4x4._ROTATION_X_MATRIX.data[9] = s;
+	tomahawk_ns.Matrix4x4._ROTATION_X_MATRIX.data[10] = c;
+	
+	this.appendMatrix( tomahawk_ns.Matrix4x4._ROTATION_X_MATRIX );
+	
+	c = tomahawk_ns.Matrix4x4._cos[ry];
+	s = tomahawk_ns.Matrix4x4._sin[ry];
+	
+	tomahawk_ns.Matrix4x4._ROTATION_Y_MATRIX.data[0] = c;
+	tomahawk_ns.Matrix4x4._ROTATION_Y_MATRIX.data[2] = -s;
+	tomahawk_ns.Matrix4x4._ROTATION_Y_MATRIX.data[8] = s;
+	tomahawk_ns.Matrix4x4._ROTATION_Y_MATRIX.data[10] = c;
+	
+	this.appendMatrix( tomahawk_ns.Matrix4x4._ROTATION_Y_MATRIX );
+	
+	c = tomahawk_ns.Matrix4x4._cos[rz];
+	s = tomahawk_ns.Matrix4x4._sin[rz];
+	
+	tomahawk_ns.Matrix4x4._ROTATION_Z_MATRIX.data[0] = c;
+	tomahawk_ns.Matrix4x4._ROTATION_Z_MATRIX.data[1] = -s;
+	tomahawk_ns.Matrix4x4._ROTATION_Z_MATRIX.data[4] = s;
+	tomahawk_ns.Matrix4x4._ROTATION_Z_MATRIX.data[5] = c;
+	
+	this.appendMatrix( tomahawk_ns.Matrix4x4._ROTATION_Z_MATRIX );
+	return this;
+};
+

@@ -1,0 +1,70 @@
+
+// engine Blitz3d C++ geometry code
+http://www.blitzbasic.com/Community/posts.php?topic=42657
+
+// engine tomahawk canvas 2d engine
+https://github.com/thetinyspark/tomahawk/
+
+// coordinate system (lh vs rh)
+https://www.evl.uic.edu/ralph/508S98/coordinates.html
+http://www.learnopengles.com/understanding-opengls-matrices/left_right_hand/
+https://en.wikipedia.org/wiki/Right-hand_rule#Rotation
+https://msdn.microsoft.com/en-us/library/windows/desktop/bb204853%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
+
+// view matrix / vector matrix multiplications
+http://www.3dgep.com/understanding-the-view-matrix/
+
+// line plane intersection
+http://stackoverflow.com/questions/5666222/3d-line-plane-intersection
+http://math.stackexchange.com/questions/83990/line-and-plane-intersection-in-3d
+
+//ray tracing triangle (barycentric)
+http://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/barycentric-coordinates
+
+// point in triangle (barycentric)
+https://blogs.msdn.microsoft.com/rezanour/2011/08/07/barycentric-coordinates-and-point-in-triangle-tests/
+
+
+// yaw pitch roll
+https://en.wikipedia.org/wiki/Euler_angles#Tait.E2.80.93Bryan_angles
+
+// primitive types
+https://de.wikipedia.org/wiki/Datei:GeometricPrimitiveTypes.png
+
+// pipeline
+http://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-GPU-rendering-pipeline-clipping
+https://msdn.microsoft.com/dynimg/IC36123.gif
+http://image.slidesharecdn.com/geometryshaderbasedbumpmappingsetup-120301034520-phpapp02/95/geometry-shaderbased-bump-mapping-setup-13-728.jpg?cb=1330680724
+http://www.csie.ntu.edu.tw/~b6506050/Introduction/Rasterization/rasterization.html
+
+// matrices (row major order)
+https://en.wikipedia.org/wiki/Row-major_order
+
+// boundingfrustum from perspectiv matric
+http://www.technologicalutopia.com/sourcecode/xnageometry/boundingfrustum.cs.htm
+
+// antialias
+http://artgrammer.blogspot.de/2011/05/drawing-nearly-perfect-2d-line-segments.html
+
+// line 3 equation
+http://mathforum.org/library/drmath/view/65721.html
+
+// line 3 intersection
+https://www.physicsforums.com/threads/finding-the-intersection-points-of-the-two-lines-in-space.581403/
+http://math.stackexchange.com/questions/270767/find-intersection-of-two-3d-lines
+
+// other
+http://www.directxtutorial.com/Lesson.aspx?lessonid=11-4-5
+
+// triangle rasterization (i am using my own algorythm)
+http://joshbeam.com/articles/triangle_rasterization/
+http://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation
+
+// zbuffer
+https://en.wikipedia.org/wiki/Z-buffering
+
+// clipping
+http://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-GPU-rendering-pipeline-clipping
+https://de.wikipedia.org/wiki/Algorithmus_von_Cohen-Sutherland
+http://www.sunshine2k.de/coding/java/SutherlandHodgman/SutherlandHodgman.html
+https://rosettacode.org/wiki/Sutherland-Hodgman_polygon_clipping#PHP
