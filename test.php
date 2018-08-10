@@ -26,11 +26,11 @@ $width = 1600;
 $height = 700;
 $bgColor = 0x00000000;
 
-$camera = [1200,2000,1500,1];
-$target = [0,0,0,1];
+$camera = [-300,1800,600,1];
+$target = [0,0,300,1];
 $up = [0,0,1,1];
 
-$fov = deg2rad(45); //53.130102354155
+$fov = deg2rad(40); //53.130102354155
 $aspect = $width/$height;
 $near = 1;
 $far = 100;
@@ -43,36 +43,28 @@ S3D::beginScene();
 //--------------------------------------------------
 // RENDER SCENE START
 
-    S3D::setTexture( (imagecreatefromjpeg("test.jpg")) );
-
-
-    // draw image
-
-    S3D::setWorld( Matrix4::translation(0, -1000, 0) );
-
-    $textureW = 2118;
-    $textureH = 1500;
-    $verticesTriangle = [];
-    $verticesTriangle[] = [[-$textureW/2, -$textureH/2, 0, 1], [0,0]];
-    $verticesTriangle[] = [[ $textureW/2, -$textureH/2, 0, 1], [1,0]];
-    $verticesTriangle[] = [[-$textureW/2,  $textureH/2, 0, 1], [0,1]];
-    $verticesTriangle[] = [[ $textureW/2,  $textureH/2, 0, 1], [1,1]];
-    S3D::drawPrimitives($verticesTriangle, S3D_TRIANGLESTRIP, S3D_TEXTURED, 2, 0);
 
 
 
+    $landscapeWidth = 1600;
+    $landscapeHeight = 900;
 
-    // draw lines
 
-    S3D::setWorld( Matrix4::translation(0, 1000, 0) );
 
-    $lineWidth = 2118;
+    // draw ground lines
+
+    S3D::setTexture( (imagecreatefromjpeg("ground.jpg")) );
+
+    S3D::setWorld( Matrix4::translation(0, 0, 0) );
+
+    $lineWidth = $landscapeWidth;
     $lineWidthHalf = $lineWidth / 2;
-    $lineHeight = 1500;
+    $lineHeight = $landscapeWidth;
     $lineHeightHalf = $lineHeight / 2;
+    $linesPerSide = 123;
 
-    $stepValY = $lineHeight / 200;
-    $stepValX = $lineWidth / 200;
+    $stepValY = $lineHeight / $linesPerSide;
+    $stepValX = $lineWidth / $linesPerSide;
 
     $verticesWhite = [];
     for($y=$lineHeightHalf; $y>=-$lineHeightHalf; $y-=$stepValY)
@@ -87,6 +79,57 @@ S3D::beginScene();
     }
     S3D::drawPrimitives($verticesWhite, S3D_LINELIST, S3D_TEXTURED, count($verticesWhite)/2, 0);
 
+
+
+
+    // draw landscape images
+
+
+    S3D::setTexture( (imagecreatefromjpeg("landscape.jpg")) );
+
+    $textureW = $landscapeWidth;
+    $textureH = $landscapeHeight;
+    $verticesTriangle = [];
+    $verticesTriangle[] = [[-$textureW/2, -$textureH/2, 0, 1], [0,0]];
+    $verticesTriangle[] = [[ $textureW/2, -$textureH/2, 0, 1], [1,0]];
+    $verticesTriangle[] = [[-$textureW/2,  $textureH/2, 0, 1], [0,1]];
+    $verticesTriangle[] = [[ $textureW/2,  $textureH/2, 0, 1], [1,1]];
+
+    $groundHalf = $landscapeWidth / 2;
+    $landscapeHalf = $landscapeHeight / 2;
+
+
+
+    S3D::setWorld(
+        Matrix4::prependMatrix(
+            Matrix4::rotationX(deg2rad(-90)),
+            Matrix4::translation(0, -$groundHalf, $landscapeHalf)
+        )
+    );
+    S3D::drawPrimitives($verticesTriangle, S3D_TRIANGLESTRIP, S3D_TEXTURED, 2, 0);
+
+    S3D::setWorld(
+        Matrix4::prependMatrix(
+            Matrix4::prependMatrix(
+                Matrix4::rotationX(deg2rad(-90)),
+                Matrix4::rotationZ(deg2rad(90))
+            ),
+            Matrix4::translation(-$groundHalf, 0, $landscapeHalf)
+        )
+    );
+    S3D::drawPrimitives($verticesTriangle, S3D_TRIANGLESTRIP, S3D_TEXTURED, 2, 0);
+
+
+    S3D::setWorld(
+        Matrix4::prependMatrix(
+            Matrix4::prependMatrix(
+                Matrix4::rotationX(deg2rad(-90)),
+                Matrix4::rotationZ(deg2rad(-90))
+            ),
+            Matrix4::translation($groundHalf, 0, $landscapeHalf)
+        )
+    );
+    S3D::drawPrimitives($verticesTriangle, S3D_TRIANGLESTRIP, S3D_TEXTURED, 2, 0);
 
 
 
