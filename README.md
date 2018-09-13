@@ -1,7 +1,7 @@
 # PHP-Static3D-0.1.0alpha
 
 In normal cases PHP runs in just one single thread. Thats why a 3D rendering engine could be useless. 
-Well, this project is not to replace the wheel by an new and better one but to understand the basics of 3d rendering. 
+Well, this project is not to reinvent the wheel and replace it with a new and better one but to understand the basics of 3d rendering. 
  
 Static3D can't render opaque textures or reflections! 
 Static3D can't work with meshes (yet)! 
